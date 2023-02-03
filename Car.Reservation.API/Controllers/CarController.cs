@@ -16,7 +16,7 @@ namespace API.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<int> Get()
         {
-           
+            return null;
         }
     }
 }
