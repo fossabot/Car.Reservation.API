@@ -1,6 +1,6 @@
 ﻿using Application.Abstract.Repositories;
 using Domain.Models;
-using Infrastructure.Persistence;
+using Infrastructure.Persistence.Context;
 
 namespace Infrastructure.Repositories
 {
