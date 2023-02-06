@@ -12,6 +12,6 @@
 
         public bool HasReservationInNext24Hours { get; set; }
 
-        public List<Reservation> Reservations { get; set; }
+        //public List<Reservation> Reservations { get; set; }
     }
 }

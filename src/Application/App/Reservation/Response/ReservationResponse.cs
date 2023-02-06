@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.App.Reservation.Response
+﻿namespace Application.App.Reservation.Response
 {
-    internal class ReservationResponse
+    public class ReservationResponse
     {
     }
 }

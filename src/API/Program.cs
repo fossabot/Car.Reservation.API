@@ -1,15 +1,20 @@
 using Infrastructure.Persistence.Context;
+using Mapster;
+using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var config = TypeAdapterConfig.GlobalSettings;
+var mapperConfig = new Mapper(config);
+builder.Services.AddSingleton<IMapper>(mapperConfig);
 
 var app = builder.Build();
 

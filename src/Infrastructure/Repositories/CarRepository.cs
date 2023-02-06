@@ -1,4 +1,5 @@
 ﻿using Application.Abstract.Repositories;
+using Application.App.Car.Response;
 using Domain.Models;
 using Infrastructure.Persistence.Context;
 
@@ -9,5 +10,6 @@ namespace Infrastructure.Repositories
         public CarRepository(CarReservationContext context) : base(context)
         {
         }
+
     }
 }

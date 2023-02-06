@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.App.Reservation.Command
+﻿namespace Application.App.Reservation.Command
 {
-    internal class CreateReservationCommand
+    public class CreateReservationCommand
     {
     }
 }

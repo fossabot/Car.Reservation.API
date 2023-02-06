@@ -28,7 +28,7 @@ namespace Infrastructure
             var entries = context.ChangeTracker.Entries()
                 .Where(x => x.State == EntityState.Added || x.State == EntityState.Modified).ToList();
 
-            if (!entries.Any(x => x.Entity is not BaseEntity))
+            if (entries.Any(x => x.Entity is not BaseEntity))
                 return;
 
             foreach (var entry in entries.Where(entry => entry.Entity is BaseEntity))

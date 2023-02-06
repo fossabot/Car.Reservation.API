@@ -1,4 +1,6 @@
-﻿using Infrastructure.Persistence.Context;
+﻿using Application.Abstract.Repositories;
+using Infrastructure.Persistence.Context;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -10,7 +12,10 @@ public static class ConfigureServices
     {
         services.AddDbContext<CarReservationContext>(options =>
                 options.UseSqlServer(configuration["DbConnection"]));
-        
+
+        services.AddScoped<ICarRepository, CarRepository>();
+        services.AddScoped<IReservationRepository, ReservationRepository>();
+
         return services;
     }
 }
