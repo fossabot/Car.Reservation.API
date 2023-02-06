@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Application.Abstract.Repositories;
 using Domain.Models;
-using Infrastructure.Persistence;
+using Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories

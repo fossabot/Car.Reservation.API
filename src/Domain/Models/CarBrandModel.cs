@@ -3,6 +3,6 @@
     public class CarBrandModel : BaseEntity
     {
         public string Name { get; set; }
-        public DateOnly Year { get; set; }
+        public DateTime Year { get; set; }
     }
 }
