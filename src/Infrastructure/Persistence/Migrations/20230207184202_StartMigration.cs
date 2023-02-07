@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Persistence.Migrations
 {
-    public partial class SampleMigration : Migration
+    public partial class StartMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,6 +49,7 @@ namespace Infrastructure.Persistence.Migrations
                     Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CPatterNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Hash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HasReservationInNext24Hours = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EditedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -98,7 +99,6 @@ namespace Infrastructure.Persistence.Migrations
                     ReservedUntil = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Range = table.Column<TimeSpan>(type: "time", nullable: false),
                     CarId = table.Column<long>(type: "bigint", nullable: false),
-                    TopCarId = table.Column<long>(type: "bigint", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EditedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -111,11 +111,6 @@ namespace Infrastructure.Persistence.Migrations
                         principalTable: "Cars",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reservations_TopCar_TopCarId",
-                        column: x => x.TopCarId,
-                        principalTable: "TopCar",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -128,11 +123,6 @@ namespace Infrastructure.Persistence.Migrations
                 name: "IX_Reservations_CarId",
                 table: "Reservations",
                 column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reservations_TopCarId",
-                table: "Reservations",
-                column: "TopCarId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TopCar_CarBrandId",
@@ -151,10 +141,10 @@ namespace Infrastructure.Persistence.Migrations
                 name: "Reservations");
 
             migrationBuilder.DropTable(
-                name: "Cars");
+                name: "TopCar");
 
             migrationBuilder.DropTable(
-                name: "TopCar");
+                name: "Cars");
 
             migrationBuilder.DropTable(
                 name: "CarBrand");

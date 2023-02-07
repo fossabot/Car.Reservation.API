@@ -5,10 +5,11 @@ namespace Application.Abstract.Repositories
 {
     public interface IBaseRepository<TModel> where TModel : BaseEntity
     {
-
         TModel Add(TModel entity);
         TModel Update(TModel entity);
         TModel Delete(TModel entity);
+
+        Task<bool> AnyAsync(Expression<Func<TModel, bool>> predicate, CancellationToken cancellationToken);
 
         Task<TModel> FindByIdAsync(long id, CancellationToken cancellationToken);
 

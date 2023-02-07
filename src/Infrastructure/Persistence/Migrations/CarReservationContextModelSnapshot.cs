@@ -47,6 +47,10 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<bool>("HasReservationInNext24Hours")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Hash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -134,14 +138,9 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<DateTime>("ReservedUntil")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("TopCarId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("TopCarId");
 
                     b.ToTable("Reservations");
                 });
@@ -190,10 +189,6 @@ namespace Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.TopCar", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("TopCarId");
-
                     b.Navigation("Car");
                 });
 
@@ -217,11 +212,6 @@ namespace Infrastructure.Persistence.Migrations
                 });
 
             modelBuilder.Entity("Domain.Models.Car", b =>
-                {
-                    b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("Domain.Models.TopCar", b =>
                 {
                     b.Navigation("Reservations");
                 });

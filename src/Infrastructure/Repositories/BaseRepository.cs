@@ -42,6 +42,11 @@ namespace Infrastructure.Repositories
             return Set.Remove(entity).Entity;
         }
 
+        public async Task<bool> AnyAsync(Expression<Func<TModel, bool>> predicate, CancellationToken cancellationToken)
+        {
+            return await Set.AnyAsync(predicate, cancellationToken);
+        }
+
         public async Task<TModel> FindByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             var result = await Set.FindAsync(new object[] { id }, cancellationToken);
